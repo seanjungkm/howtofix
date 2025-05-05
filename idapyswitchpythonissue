@@ -1,0 +1,5 @@
+#ida 실행 시 python.dll 미지정으로 인한 issue 시 아래와 같이 설정
+cmd 관리자 권한 > ida 설치 경로 진입
+python 설치경로 상 dll 파일 경로 찾기
+이후 ida 설치경로에서 아래와 같이 입력
+idapyswitch.exe -s C:\Users\Sean\AppData\Local\Programs\Python\Python310\python310.dll
