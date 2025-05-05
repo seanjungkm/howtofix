@@ -1,0 +1,14 @@
+#윈도우 11 넘어오면서 24H2버전에서 일어나는 VM, Nox 실행 불가 사태 해결에는 VBS 해제를 해야한다. 방안은 아래와 같음
+
+우선 win+s > 시스템 정보 상 보안 부팅 상태, 가상화 기반 보안이 해제 또는 사용안함으로 되어있어야함
+
+IF 보안 부팅 상태가 켜져있는경우에는 바이오스에서 secure boot 해제 
+
+IF 가상화 기반 보안 OFF는 메모리 무결성 끄기 > 그룹 정책 수정 > 레지스트리 수정 > CMD 명령어 입력 단계로 진행 후 재부팅
+
+메모리 무결성 끄기는 win + s > 코어격리 진입 후 메모리 무결성 끔
+그룹 정책 수정은 win + s > 그룹 정책 진입 > 컴퓨터 구성 > 관리 템플릿 > 시스템 > Device Guard 진입 후 가상화 보안 켜기 더블클릭 > 사용 안함
+레지스트리는 win + s > regedit > 컴퓨터\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard > 해당 값들 0으로 변경
+cmd 입력은 관리자 권한으로 bcdedit /set hypervisorlaunchtype off
+
+위 4개 진행 후 재부팅
